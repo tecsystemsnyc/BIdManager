@@ -1,0 +1,158 @@
+﻿<Window x:Class="BidManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BidManager"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        x:Name="mainWindow"
+        mc:Ignorable="d"
+        Title="Bid Manager" Height="500" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid DataContext="{Binding ElementName=mainWindow, Path=DataContext}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Bid Information">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bid Number: "/>
+                    <TextBox Text="{Binding BidNumber}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Project Name: "/>
+                    <TextBox Text="{Binding ProjectName}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Project Location: "/>
+                    <TextBox Text="{Binding Location}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Salesperson: "/>
+                    <TextBox Text="{Binding Salesperson}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Estimator: "/>
+                    <TextBox Text="{Binding Estimator}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bid Received: "/>
+                    <DatePicker SelectedDate="{Binding ReceivedDate}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bid Due: "/>
+                    <DatePicker SelectedDate="{Binding DueDate}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Requested By: "/>
+                    <TextBox Text="{Binding RequestedBy}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Client: "/>
+                    <TextBox Text="{Binding Client}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Scope Required?: "/>
+                    <CheckBox IsChecked="{Binding RequiresScope}" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Technical Proposal Required?: "/>
+                    <CheckBox IsChecked="{Binding TechnicalRequired}" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="File Information"
+                  Grid.Row="1">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bid Folder:"/>
+                    <TextBlock Text="{Binding BidFolder}" Grid.Column="1"/>
+                    <Button Content="..." Command="{Binding SelectBidFolderCommand}" Grid.Column="2"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Bid Log:"/>
+                    <TextBlock Text="{Binding BidLog}" Grid.Column="1"/>
+                    <Button Content="..." Command="{Binding SelectBidLogCommand}" Grid.Column="2"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Reference Folder:"/>
+                    <TextBlock Text="{Binding ReferenceFolder}" Grid.Column="1"/>
+                    <Button Content="..." Command="{Binding SelectReferenceFolderCommand}" Grid.Column="2"/>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <Grid Grid.Row="2">
+            <Button Content="Setup Bid" Command="{Binding SetupBidCommand}"/>
+        </Grid>
+    </Grid>
+</Window>
